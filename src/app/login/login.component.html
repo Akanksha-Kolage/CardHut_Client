@@ -40,19 +40,19 @@
             <div class="col-lg-6 login-form-section">
 
                 <h2 class="text-center">Sign In</h2>
-                <form>
+                <form #loginform="ngForm" (ngSubmit)="loginUser()">
 
                     <div class="form-group position-relative">
-                        <input type="text" id="username" name="username" placeholder="Enter Username"
+                        <input type="number" id="userId" name="userId" [(ngModel)]="login.userId" placeholder="Enter User Id"
                             class="login-input-box" required>
                         <i class="fa fa-user fa-lg position-absolute"></i>
                     </div>
                     <div class="form-group position-relative">
-                        <input type="password" id="password" name="password" placeholder="Enter Password"
+                        <input type="password" id="password" name="password" [(ngModel)]="login.password" placeholder="Enter Password"
                             class="login-input-box" required>
                         <i class="fa fa-unlock-alt fa-lg position-absolute"></i>
                     </div>
-                    <button name="login" id="login" class="btn login-button" [routerLink]="['/dashboard']"> Sign In</button><br><br>
+                    <button type="submit" name="login" id="login" class="btn login-button" > Sign In</button><br><br>
                     <a [routerLink]="['/forgotPassword']">Forget Password ?</a>
                     <hr style="height:2px; border-width:0; color:#191932; background-color:#191932; ">
                     <p>Don't have account?</p>
