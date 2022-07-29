@@ -1,0 +1,116 @@
+<!-------------------------------------------- navbar start ----------------------------------------------------->
+
+<nav class="navbar navbar-expand-lg justify-content-between fixed-top" style="background-color: rgb(176, 176, 176);">
+    <!-- <a class="navbar-brand font-weight-bold main-heading " href="#"><img src="../images/child-5.jpg"
+                class="logo">CardHut</a> -->
+    <!-- <div class="main-heading">CardHut</div> -->
+    <div class="brand1" href="#">CARD</div>
+    <div class="brand2" href="#">HUT</div>
+
+
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo02"
+        aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
+        <ul class="navbar-nav ml-auto font-weight-bold text-uppercase">
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true"
+                    aria-expanded="false" style="color:#191970">
+                    <i class="fa fa-user fa-lg ml-2 mr-2" style="color:#191970"></i> Prachi Ramane</a>
+                <div class="dropdown-menu">
+                    <a class="dropdown-item" href="#" [routerLink]="['/dashboard']">Your Account</a>
+                    <a class="dropdown-item" href="#" [routerLink]="['/transactions']">Your Transactions</a>
+                    <a class="dropdown-item" href="#"></a>
+                    <div class="dropdown-divider"></div>
+                    <a class="dropdown-item" href="#" [routerLink]="['/login']">Logout</a>
+                </div>
+            </li>
+        </ul>
+    </div>
+</nav>
+<!-------------------------------------------- navbar End ----------------------------------------------------->
+
+
+<br><br><br><br>
+<div class="media">
+    <!-- <div class="card">
+            <img class="card-img-top" src="../images/mobile4.jpg" alt="Card image cap" width="200" height="200">
+        </div> -->
+
+    <img class="align-self-center mr-2" src="./assets/images/mobile3.jpg" alt="Generic placeholder image" width="510"
+        height="510" style="padding-inline: 15px 20px;">
+    <div class="media-body">
+        <h3 class="mt-0">IPHONE</h3>
+        <h5 class="mt-0">&#8377; 32,999</h5>
+        <!-- <p>Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin. Cras purus odio,
+            vestibulum in vulputate at, tempus viverra turpis. Fusce condimentum nunc ac nisi vulputate fringilla. Donec
+            lacinia congue felis in faucibus.</p>
+        <p class="mb-0">Donec sed odio dui. Nullam quis risus eget urna mollis ornare vel eu leo. Cum sociis natoque
+            penatibus et magnis dis parturient montes, nascetur ridiculus mus. jue hueue Lorem ipsum dolor sit amet
+            consectetur adipisicing elit. Itaque magnam eum reprehenderit asperiores, eos doloremque soluta ipsam iste
+            officia laboriosam praesentium reiciendis labore amet officiis exercitationem aspernatur nobis laudantium
+            dolorum?Lorem ipsum dolor, sit amet consectetur adipisicing elit. Delectus sed nulla molestias inventore,
+            veritatis explicabo. Totam voluptatibus cupiditate, sit nihil illum facere, vel nobis in ducimus laborum
+            earum, unde optio.</p>
+        <p class="mb-0">Donec sed odio dui. Nullam quis risus eget urna mollis ornare vel eu leo. Cum sociis natoque
+            penatibus et magnis dis parturient montes, nascetur ridiculus mus. jue hueue Lorem ipsum dolor sit amet
+            consectetur adipisicing elit. Itaque magnam eum reprehenderit asperiores, eos doloremque soluta ipsam iste
+            officia laboriosam praesentium reiciendis labore amet officiis exercitationem aspernatur nobis laudantium
+            dolorum?Lorem ipsum dolor, sit amet consectetur adipisicing elit. Delectus sed nulla molestias inventore,
+            veritatis explicabo. Totam voluptatibus cupiditate, sit nihil illum facere, vel nobis in ducimus laborum
+            earum, unde optio.</p>
+        <p class="mb-0">Donec sed odio dui. Nullam quis risus eget urna mollis ornare vel eu leo. Cum sociis natoque
+            penatibus et magnis dis parturient montes, nascetur ridiculus mus. jue hueue Lorem ipsum dolor sit amet
+            consectetur adipisicing elit. Itaque magnam eum reprehenderit asperiores, eos doloremque soluta ipsam iste
+            officia laboriosam praesentium reiciendis labore amet officiis exercitationem aspernatur nobis laudantium
+            dolorum?Lorem ipsum dolor, sit amet consectetur adipisicing elit. Delectus sed nulla molestias inventore,
+            veritatis explicabo. Totam voluptatibus cupiditate, sit nihil illum facere, vel nobis in ducimus laborum
+            earum, unde optio.</p> -->
+    </div>
+</div>
+<br><br>
+<div class="card-deck products-card">
+    <div class="card">
+        <div class="card-body">
+            <h5 class="card-title" style="text-align: center;">3 MONTHS EMI</h5>
+            <p class="card-text" style="text-align: center;">Rs. 10,999 Per Month</p>
+        </div>
+        <div class="card-footer text-center">
+            <button type="button" class="btn btn-outline-dark" [routerLink]="['/transactionReceipt']">Buy Now</button>
+        </div>
+    </div>
+
+    <div class="card">
+        <div class="card-body">
+            <h5 class="card-title" style="text-align: center;">6 MONTHS EMI</h5>
+            <p class="card-text" style="text-align: center;">Rs. 5,499 Per Month</p>
+        </div>
+        <div class="card-footer text-center">
+            <button type="button" class="btn btn-outline-dark" [routerLink]="['/transactionReceipt']">Buy Now</button>
+        </div>
+    </div>
+
+    <div class="card">
+        <div class="card-body">
+            <h5 class="card-title" style="text-align: center;">9 MONTHS EMI</h5>
+            <p class="card-text" style="text-align: center;">Rs. 3,666 Per Month</p>
+        </div>
+        <div class="card-footer text-center">
+            <button type="button" class="btn btn-outline-dark" [routerLink]="['/transactionReceipt']">Buy Now</button>
+        </div>
+    </div>
+
+    <div class="card">
+        <div class="card-body">
+            <h5 class="card-title" style="text-align: center;">12 MONTHS EMI</h5>
+            <p class="card-text" style="text-align: center;">Rs. 2,749 Per Month</p>
+        </div>
+        <div class="card-footer text-center">
+            <button type="button" class="btn btn-outline-dark" [routerLink]="['/transactionReceipt']">Buy Now</button>
+        </div>
+    </div>
+
+</div>
+<br>
