@@ -1,5 +1,11 @@
 <div class="login-page">
-    {{message}}
+
+    <br>
+    <br>
+
+
+    <div style="color: red; text-align: center;font-weight: bold;" >{{message}}</div>
+
     <div class="container login-section">
         <div class="row">
             <div class="col-lg-6 image-section">
@@ -54,13 +60,14 @@
                         <i class="fa fa-unlock-alt fa-lg position-absolute"></i>
                     </div>
                     <button type="submit" name="login" id="login" class="btn login-button" > Sign In</button><br><br>
-                    <a [routerLink]="['/forgotPassword']">Forget Password ?</a>
-                    <hr style="height:2px; border-width:0; color:#191932; background-color:#191932; ">
-                    <p>Don't have account?</p>
-                    <button name="signup" id="signup" class="btn login-button" [routerLink]="['/register']"> Sign Up</button>
+                   
 
 
                 </form>
+                <a [routerLink]="['/forgotPassword']">Forget Password ?</a>
+                <hr style="height:2px; border-width:0; color:#191932; background-color:#191932; ">
+                <p>Don't have account?</p>
+                <button name="signup" id="signup" class="btn login-button" [routerLink]="['/register']"> Sign Up</button>
             </div>
 
         </div>

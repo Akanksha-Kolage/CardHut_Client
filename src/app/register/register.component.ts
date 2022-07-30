@@ -18,6 +18,8 @@ export class RegisterComponent implements OnInit {
   }
 
   register(){
+    this.user.eligible=false;
+  
     this.registerService.registerUser(this.user)
       .subscribe(
         msg => {

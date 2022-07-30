@@ -57,9 +57,14 @@
                                 <label class=" col-lg-4">IFSC Code :</label>
                                 <input type="text" class="col-lg-8 form-control" placeholder="Enter IFSC code"
                                     value="" name="userIfsc" [(ngModel)]="user.userIfsc" required> <br><br>
-                                <button type="submit" class="btn login-button" name="submit" >Submit</button>
+                                <button type="submit" class="btn login-button" name="submit" >Submit</button><br><br>
+
+                                
+    
+
                             </div>
                         </div>
+                        <div style="color: green;">{{message}}</div>
                     </form>
                 </div>
             </div>
