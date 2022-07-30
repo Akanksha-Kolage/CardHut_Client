@@ -2,6 +2,8 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { Login } from './login';
+import { Product } from './product';
+import { UpdateProduct } from './update-product';
 import { User } from './user';
 
 @Injectable({
@@ -17,5 +19,21 @@ export class RegisterService {
 
   loginUser(login:Login):Observable<string>{
     return this.http.post("http://localhost:9191/users/login", login,{responseType:'text'});
+  }
+
+  addProduct(product: Product): Observable<string> {
+    return this.http.post("http://localhost:9191/products/addProduct", product, { responseType: 'text' });
+  }
+
+  viewAllProducts(): Observable<any> {
+    return this.http.get("http://localhost:9191/products/viewAll");
+  }
+
+  getProduct(productId: number): Observable<Product> {
+    return this.http.get<Product>("http://localhost:9191/products/"+productId);
+  }
+
+  updateProduct(product: Product): Observable<UpdateProduct> {
+    return this.http.put<UpdateProduct>("http://localhost:9191/products/update", product);
   }
 }

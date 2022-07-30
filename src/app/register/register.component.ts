@@ -22,7 +22,7 @@ export class RegisterComponent implements OnInit {
       .subscribe(
         msg => {
           this.message = msg;
-      
+          console.log(this.message);
         }
       );
     

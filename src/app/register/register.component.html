@@ -2,6 +2,9 @@
     <div class="row m-0">
         <div class="col-lg-6">
             <h3 class="text-center m-4">Sign Up</h3>
+            <br>
+            <h5 style="color:red; font-weight:bold">{{message}}</h5>
+            <br>
             <div class="card chapterCard">
                 <div class="card-body">
 
@@ -9,8 +12,16 @@
                         <div class="form-group">
                             <div class="row ">
                                 <label class=" col-lg-4">Full Name :</label>
-                                <input type="text"  class="form-control col-lg-8" placeholder="Enter your name"
-                                    id="fullName" name="fullName" [(ngModel)]="user.fullName" required> <br><br>
+                                <input type="text" #fullName="ngModel" id="fullName" class="form-control col-lg-8" placeholder="Enter your name"
+                                    id="fullName" name="fullName" [(ngModel)]="user.fullName" [ngClass]="{'red-border-class':fullName.errors?.['required']}" 
+                                    pattern="[a-zA-Z\s]" required> <br><br>
+                                    <!-- <ul class="alert-error" *ngIf="fullName.touched && fullName.errors">
+                                        <li style="list-style: none; color:red;" *ngIf="fullName.errors?.['required']"> Name is required. </li>
+                                        <li *ngIf="fullName.errors?.['pattern']">Invalid name.</li>
+                                    </ul> -->
+                                    <!-- <div *ngIf="uname.touched && uname.invalid">
+                                        <div class="row"><span class="col-lg" style="color:red;">Please enter your name</span></div>
+                                    </div><br>  -->
                                 <!--div class=" col-lg-2"></div-->
                                 <!-- <label class=" col-lg-4">DOB :</label>
                                 <input type="date" class="form-control col-lg-8" value="" id="userDate" name="userDate"

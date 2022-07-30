@@ -1,8 +1,11 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { AddProductComponent } from './add-product/add-product.component';
+import { AdminDashboardComponent } from './admin-dashboard/admin-dashboard.component';
 import { AdminLoginComponent } from './admin-login/admin-login.component';
 import { CardComponent } from './card/card.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
+import { EditProductComponent } from './edit-product/edit-product.component';
 import { ForgotpasswordComponent } from './forgotpassword/forgotpassword.component';
 import { LandingPageComponent } from './landing-page/landing-page.component';
 import { LoginComponent } from './login/login.component';
@@ -11,6 +14,8 @@ import { ProductsComponent } from './products/products.component';
 import { RegisterComponent } from './register/register.component';
 import { TransactionReceiptComponent } from './transaction-receipt/transaction-receipt.component';
 import { TransactionsComponent } from './transactions/transactions.component';
+import { ViewProductsComponent } from './view-products/view-products.component';
+import { ViewUsersComponent } from './view-users/view-users.component';
 
 const routes: Routes = [
   {
@@ -45,6 +50,21 @@ const routes: Routes = [
   },
   {
     path: 'adminLogin', component: AdminLoginComponent
+  },
+  {
+    path: 'adminDashboard', component: AdminDashboardComponent
+  },
+  {
+    path: 'viewUsers', component: ViewUsersComponent
+  },
+  {
+    path:'viewProducts', component: ViewProductsComponent
+  },
+  {
+    path: 'addProduct', component: AddProductComponent
+  },
+  {
+    path: 'editProduct', component: EditProductComponent
   }
 ];
 

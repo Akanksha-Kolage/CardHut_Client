@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { Login } from '../login';
 import { RegisterService } from '../register.service';
 
@@ -11,7 +12,7 @@ export class LoginComponent implements OnInit {
 
   login:Login=new Login();
   message:String;
-  constructor(private registerService:RegisterService) { }
+  constructor(private registerService: RegisterService, private route: Router) { }
  
 
   ngOnInit(): void {
@@ -24,6 +25,7 @@ export class LoginComponent implements OnInit {
         msg => {
           this.message = msg;
           console.log(this.message);
+          this.route.navigate(['/dashboard']);
         }
       );
   }
