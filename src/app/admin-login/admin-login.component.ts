@@ -11,7 +11,8 @@ import { RegisterService } from '../register.service';
 export class AdminLoginComponent implements OnInit {
 
 
-  adminLogin:AdminLogin=new AdminLogin();
+  adminLogin: AdminLogin = new AdminLogin();
+  errorMessage: string;
   constructor(private registerService:RegisterService,private router:Router) { }
 
   ngOnInit(): void {
@@ -22,9 +23,12 @@ export class AdminLoginComponent implements OnInit {
     .subscribe(
       validation => {
         if(validation){
-          this.router.navigate(['']);
+          this.router.navigate(['/adminDashboard']);
         }
-    
+        else {
+          this.errorMessage = "Invalid Credentials";
+          console.log(this.errorMessage);
+        }
       }
     );
   }

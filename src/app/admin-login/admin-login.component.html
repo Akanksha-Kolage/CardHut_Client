@@ -5,17 +5,25 @@
                 Account Login
             </span>
             <form #adminLoginForm="ngForm" (ngSubmit)="login()" class="login100-form validate-form p-b-33 p-t-5">
-
+                <div style="color:red;text-align: center;">
+                    {{errorMessage}}
+                </div>
                 <div class="wrap-input100 validate-input" data-validate="Enter username">
                     <i class="fa fa-user fa-lg uicon " style="color:#191970"></i>
-                    <input class="input100" type="text" name="username" [(ngModel)]="adminLogin.username" placeholder="User name">
+                    <input class="input100" type="text" name="username" [(ngModel)]="adminLogin.username" required #uname=ngModel placeholder="User name">
                     <span class="focus-input100"></span>
+                    <div class="uicon" *ngIf="uname.invalid && uname.touched">
+                        <div style="color:red">Admin username cannot be empty</div>
+                    </div>
                 </div>
 
                 <div class="wrap-input100 validate-input" data-validate="Enter password">
                     <i class="fa fa-lock fa-lg uicon " style="color:#191970"></i>
-                    <input class="input100" type="password" name="password"[(ngModel)]="adminLogin.password" placeholder="Password">
+                    <input class="input100" type="password" name="password"[(ngModel)]="adminLogin.password" required #upass=ngModel placeholder="Password">
                     <span class="focus-input100"></span>
+                    <div class="uicon" *ngIf="upass.invalid && upass.touched">
+                        <div style="color:red">Password cannot be empty</div>
+                    </div>
                 </div>
 
                 <div class="container-login100-form-btn m-t-32">

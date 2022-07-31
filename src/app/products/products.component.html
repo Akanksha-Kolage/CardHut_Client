@@ -83,49 +83,15 @@
         <button class="btn card-button pull-right">Explore All</button><br><br><br>
 
         <!-- ---------------------------------------- Row 1 start ------------------------------------------------->
-        <div class="card-deck products-card">
-            <div class="card">
+        <div class="row">
+            <div class="card product-card" *ngFor="let p of products">
                 <img class="card-img-top" src="./assets/images/furniture-2.jpg" alt="Card image cap">
                 <div class="card-body">
-                    <h5 class="card-title">BLUEWUD Noel Engineered Wood Rectangular Shape Table </h5>
-                    <p class="card-text">Rs. 22199</p>
+                    <h5 class="card-title">{{p.productName}}</h5>
+                    <p class="card-text">{{p.productCost}}</p>
                 </div>
                 <div class="card-footer">
-                    <button class="btn card-button" [routerLink]="['/productInfo']">Buy Now</button>
-                </div>
-            </div>
-
-            <div class="card">
-                <img class="card-img-top" src="./assets/images/mobile4.jpg" alt="Card image cap">
-                <div class="card-body">
-                    <h5 class="card-title">Redmi 9 Activ Coral Green 6GB+128GB</h5>
-                    <p class="card-text">Rs. 32,999</p>
-                </div>
-                <div class="card-footer">
-                    <button class="btn card-button">Buy Now</button>
-                </div>
-            </div>
-
-            <div class="card">
-                <img class="card-img-top" src="./assets/images/furniture-5.jpg" alt="Card image cap">
-                <div class="card-body">
-                    <h5 class="card-title">Arica Home Neem Wood Round Sofa 7 Seat</h5>
-                    <p class="card-text">Rs 19899</p>
-                </div>
-                <div class="card-footer">
-                    <button class="btn card-button">Buy Now</button>
-                </div>
-            </div>
-
-            <div class="card">
-                <img class="card-img-top" src="./assets/images/laptop-2.jpg" alt="Card image cap">
-                <div class="card-body">
-                    <h5 class="card-title">
-                        Microsoft Surface Go Intel Core i5 12.4 inches Touchscreen Laptop</h5>
-                    <p class="card-text">Rs. 74999</p>
-                </div>
-                <div class="card-footer">
-                    <button class="btn card-button">Buy Now</button>
+                    <form #buyNowForm="ngForm" (ngSubmit)="viewProduct(p.productId)" ngDefaultControl><button type="submit" class="btn card-button">Buy Now</button></form>
                 </div>
             </div>
 
@@ -136,72 +102,18 @@
 
         <!------------------------------------------------ Row 2 start ------------------------------------------->
         <h3>Top picks for you</h3><br>
-        <div class="card-deck">
-            <div class="card">
+        <div class="row">
+            <div class="card  product-card" *ngFor="let p of products">
                 <img class="card-img-top" src="./assets/images/frock-1.jpg" alt="Card image cap">
                 <div class="card-body">
-                    <h5 class="card-title">combo of 3 Baby Girl's A-Line Knee Length Dress</h5>
-                    <p class="card-text">Rs. 999</p>
+                    <h5 class="card-title">{{p.productName}}</h5>
+                    <p class="card-text">{{p.productCost}}</p>
                 </div>
                 <div class="card-footer">
                     <button class="btn card-button">Buy Now</button>
                 </div>
             </div>
 
-            <div class="card">
-                <img class="card-img-top" src="./assets/images/earphod-2.jpg" alt="Card image cap">
-                <div class="card-body">
-                    <h5 class="card-title">Solo³ Wireless - Everyday On-Ear Headphones.</h5>
-                    <p class="card-text">Rs. 6990</p>
-                </div>
-                <div class="card-footer">
-                    <button class="btn card-button">Buy Now</button>
-                </div>
-            </div>
-
-            <div class="card">
-                <img class="card-img-top" src="./assets/images/furniture-1.jpg" alt="Card image cap">
-                <div class="card-body">
-                    <h5 class="card-title">BROWN OAK FURNITURE Arm Chair</h5>
-                    <p class="card-text">Rs. 17,722</p>
-                </div>
-                <div class="card-footer">
-                    <button class="btn card-button">Buy Now</button>
-                </div>
-            </div>
-
-            <div class="card">
-                <img class="card-img-top" src="./assets/images/earpod-1.jpg" alt="Card image cap">
-                <div class="card-body">
-                    <h5 class="card-title">Samsung Galaxy Buds2 | Well-Balanced Sound</h5>
-                    <p class="card-text">Rs.11,999</p>
-                </div>
-                <div class="card-footer">
-                    <button class="btn card-button">Buy Now</button>
-                </div>
-            </div>
-
-            <div class="card">
-                <img class="card-img-top" src="./assets/images/furniture-4.jpg" alt="Card image cap">
-                <div class="card-body">
-                    <h5 class="card-title">Priti Wooden Coffee Table Living Room Table</h5>
-                    <p class="card-text">Rs. 13599</p>
-                </div>
-                <div class="card-footer">
-                    <button class="btn card-button">Buy Now</button>
-                </div>
-            </div>
-
-            <div class="card">
-                <img class="card-img-top" src="./assets/images/laptop-3.jpg" alt="Card image cap">
-                <div class="card-body">
-                    <h5 class="card-title">Samsung Galaxy Tab S6 Lite</h5>
-                    <p class="card-text">Rs. 31999/-</p>
-                </div>
-                <div class="card-footer">
-                    <button class="btn card-button">Buy Now</button>
-                </div>
-            </div>
         </div>
     </div>
     <!------------------------------------------------ Row 2 end ------------------------------------------------->
