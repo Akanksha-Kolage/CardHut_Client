@@ -1,4 +1,10 @@
-import { Component, OnInit } from '@angular/core';
+import { NgIf } from '@angular/common';
+import { Component, NgIterable, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+import { Card } from '../card';
+import { RegisterService } from '../register.service';
+import { Transaction } from '../transaction';
+import { User } from '../user';
 
 @Component({
   selector: 'app-transactions',
@@ -7,9 +13,40 @@ import { Component, OnInit } from '@angular/core';
 })
 export class TransactionsComponent implements OnInit {
 
-  constructor() { }
+  transactions: NgIterable<Transaction>;
+  card: Card = new Card();
+  transaction: Transaction = new Transaction();
+  user: User = new User();
+  constructor(private registerService: RegisterService, private route: Router) { }
 
   ngOnInit(): void {
+    this.user = JSON.parse(sessionStorage.getItem("userInfo"));
+    this.card = JSON.parse(sessionStorage.getItem("cardInfo"));
+    this.registerService.viewAllTransactions(this.card.emiCardNo)
+      .subscribe(
+        data => {
+          this.transactions = data;
+          console.log(this.transactions);
+        }
+      )
+  }
+
+  updateEmi(t:Transaction) {
+    this.registerService.updateEmi(t)
+      .subscribe(
+        tr => {
+          this.transaction = tr;
+          console.log(tr.emiCard.emiCardBalance);
+          console.log((this.transaction.product.productCost / this.transaction.emiScheme));
+          this.transaction.emiCard.emiCardBalance = this.transaction.emiCard.emiCardBalance + (this.transaction.product.productCost / this.transaction.emiScheme);
+          this.registerService.updateCard(this.transaction.emiCard).subscribe(
+            crd => {
+              sessionStorage.setItem("cardInfo", JSON.stringify(crd));
+            }
+          );
+        }
+      );
+    // window.location.reload();
   }
 
 }

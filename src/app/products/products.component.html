@@ -31,7 +31,7 @@
             <li class="nav-item dropdown" >
                 <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true"
                     aria-expanded="false" style="color:#191970">
-                    <i class="fa fa-user fa-lg ml-2 mr-2" style="color:#191970"></i> Prachi Ramane</a>
+                    <i class="fa fa-user fa-lg ml-2 mr-2" style="color:#191970"></i>{{user.fullName}}</a>
                 <div class="dropdown-menu">
                     <a class="dropdown-item" href="#" [routerLink]="['/dashboard']">Your Account</a>
                     <a class="dropdown-item" href="#" [routerLink]="['/transactions']">Your Transactions</a>
@@ -85,7 +85,7 @@
         <!-- ---------------------------------------- Row 1 start ------------------------------------------------->
         <div class="row">
             <div class="card product-card" *ngFor="let p of products">
-                <img class="card-img-top" src="./assets/images/furniture-2.jpg" alt="Card image cap">
+                <img class="card-img-top" src="http://localhost:9191/downloads/{{p.productImage}}" alt="Card image cap">
                 <div class="card-body">
                     <h5 class="card-title">{{p.productName}}</h5>
                     <p class="card-text">{{p.productCost}}</p>
@@ -101,7 +101,7 @@
 
 
         <!------------------------------------------------ Row 2 start ------------------------------------------->
-        <h3>Top picks for you</h3><br>
+        <!-- <h3>Top picks for you</h3><br>
         <div class="row">
             <div class="card  product-card" *ngFor="let p of products">
                 <img class="card-img-top" src="./assets/images/frock-1.jpg" alt="Card image cap">
@@ -114,7 +114,7 @@
                 </div>
             </div>
 
-        </div>
+        </div> -->
     </div>
     <!------------------------------------------------ Row 2 end ------------------------------------------------->
 

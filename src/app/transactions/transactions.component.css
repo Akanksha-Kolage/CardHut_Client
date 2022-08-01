@@ -18,18 +18,12 @@
     }
 
     .table-wrapper .btn {
-        float: right;
-        color: #333;
-        background-color: #fff;
+        color: rgb(255, 255, 255);
+        /* background-color: #fff; */
         border-radius: 3px;
         border: none;
         outline: none !important;
         margin-left: 10px;
-    }
-
-    .table-wrapper .btn:hover {
-        color: #333;
-        background: #f2f2f2;
     }
 
     .table-wrapper .btn.btn-primary {
@@ -135,13 +129,13 @@
         vertical-align: middle;
     }
 
-    table.table tr th:first-child {
+    /* table.table tr th:first-child {
         width: 60px;
     }
 
     table.table tr th:last-child {
         width: 80px;
-    }
+    } */
 
     table.table-striped tbody tr:nth-of-type(odd) {
         background-color: #fcfcfc;

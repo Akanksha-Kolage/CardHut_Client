@@ -26,7 +26,7 @@ export class ViewProductsComponent implements OnInit {
     )
   }
 
-  edit(productId:number) {
+  edit(productId: number) {
     this.registerService.getProduct(productId)
       .subscribe(
         prd => {
@@ -35,7 +35,8 @@ export class ViewProductsComponent implements OnInit {
           console.log(JSON.stringify(this.product));
           this.route.navigate(['/editProduct']);
         }
-      );
+    );
+   
   }
 
 }

@@ -1,6 +1,6 @@
 import { Product } from "./product";
 
-export class UpdateProduct {
-    msg: string;
+export class ProductPic {
     product: Product;
+    productPic: any;
 }

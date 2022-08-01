@@ -18,18 +18,13 @@
     }
 
     .table-wrapper .btn {
-        float: right;
-        color: #333;
+        /* float: right; */
+        color: rgb(255, 255, 255);
         /* background-color: #fff; */
         border-radius: 3px;
         border: none;
         outline: none !important;
         margin-left: 10px;
-    }
-
-    .table-wrapper .btn:hover {
-        color: #333;
-        background: #f2f2f2;
     }
 
     .table-wrapper .btn.btn-primary {

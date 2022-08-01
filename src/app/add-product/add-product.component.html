@@ -39,7 +39,7 @@
         <h2 class="text-center" style="color: #191970;">Add Product</h2>
         <hr style="height:2px; border-width:0; color:#191932; background-color:#191932; ">
         <br>
-        <form #addproductForm="ngForm" (ngSubmit)="addProduct(); addproductForm.resetForm()">
+        <form #addproductForm="ngForm"(ngSubmit)="addProduct(); addproductForm.resetForm()">
             <div class="form-group">
                 <label for="productName">Product Name</label>
                 <input type="text" name="productName" #pname="ngModel" required [(ngModel)]="product.productName" class="form-control" id="productName" placeholder="Enter product name">
@@ -62,14 +62,19 @@
                     <div style="color:red">Product description cannot be empty</div>
                 </div>
             </div>
-            <div class="form-group">
-                <label for="productImage">Upload product image</label>
-                <input type="file" class="form-control-file" id="productImage" [(ngModel)]="product.productImage" name="productImage">
-            </div>
             <br>
             <div class="form-group text-center">
                 <button type="submit" class="btn login-button" [disabled]="!addproductForm.form.valid">Add Product</button>
             </div>
         </form>
+
+        <form enctype="multipart/form-data" (ngSubmit)="upload()">
+            <div class="form-group">
+                <label for="productImage">Upload product image</label>
+                <input value="" name="productImage" type="file" (change)="onFileChange($event)">
+                <button type="submit">Upload</button>
+            </div>
+        </form>
+
     </div>
 </div>

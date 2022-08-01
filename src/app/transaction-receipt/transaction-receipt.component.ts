@@ -1,4 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+import { RegisterService } from '../register.service';
+import { Transaction } from '../transaction';
+import { User } from '../user';
 
 @Component({
   selector: 'app-transaction-receipt',
@@ -7,9 +11,14 @@ import { Component, OnInit } from '@angular/core';
 })
 export class TransactionReceiptComponent implements OnInit {
 
-  constructor() { }
+  transaction: Transaction = new Transaction();
+  user: User = new User();
+  
+  constructor(private registerService: RegisterService, private route: Router) { }
 
   ngOnInit(): void {
+    this.user = JSON.parse(sessionStorage.getItem("userInfo"));
+    this.transaction = JSON.parse(sessionStorage.getItem("transactionInfo"));
   }
 
 }

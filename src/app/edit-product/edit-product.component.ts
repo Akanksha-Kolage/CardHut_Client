@@ -25,12 +25,14 @@ export class EditProductComponent implements OnInit {
       .subscribe(
         updateProduct => {
           this.product = updateProduct.product; 
+          sessionStorage.setItem("ProductDetails", JSON.stringify(this.product));
           console.log(this.product);
           this.updateMessage = updateProduct.msg;
           alert(this.updateMessage);
-          sessionStorage.setItem("ProductDetails", JSON.stringify(this.product));
+          // sessionStorage.setItem("ProductDetails", JSON.stringify(this.product));
         }
-      );
+    );
+    window.location.reload();
 
   }
 

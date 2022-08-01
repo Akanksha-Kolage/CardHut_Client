@@ -40,7 +40,7 @@
     <div class="row">
     <div class="card-deck products-card" *ngFor="let p of products">
         <div class="card">
-            <img class="card-img-top" src="./assets/images/furniture-2.jpg" alt="Card image cap">
+            <img class="card-img-top" src="http://localhost:9191/downloads/{{p.productImage}}" alt="Card image cap">
             <div class="card-body">
                 <h5 class="card-title">{{p.productName}}</h5>
                 <p class="card-text">{{p.productCost}}</p>

@@ -6,6 +6,7 @@ import { Card } from './card';
 import { Login } from './login';
 import { LoginResponse } from './login-response';
 import { Product } from './product';
+import { ProductPic } from './product-pic';
 import { TransProductCard } from './trans-product-card';
 import { Transaction } from './transaction';
 import { UpdateProduct } from './update-product';
@@ -30,8 +31,12 @@ export class RegisterService {
     return this.http.post<boolean>("http://localhost:9191/admin/login", adminLogin);
   }
 
-  addProduct(product: Product): Observable<string> {
-    return this.http.post("http://localhost:9191/products/addProduct", product, { responseType: 'text' });
+  addProduct(product: Product): Observable<UpdateProduct> {
+    return this.http.post <UpdateProduct>("http://localhost:9191/products/addProduct", product);
+  }
+
+  uploadProductPic(formData: FormData) {
+    return this.http.post("http://localhost:9191/products/pic-upload", formData, { responseType: 'text' });
   }
 
   viewAllProducts(): Observable<any> {
@@ -39,7 +44,7 @@ export class RegisterService {
   }
 
   getProduct(productId: number): Observable<Product> {
-    return this.http.get<Product>("http://localhost:9191/products/"+productId);
+    return this.http.get<Product>("http://localhost:9191/products/getproduct?productId=" + productId);
   }
 
   updateProduct(product: Product): Observable<UpdateProduct> {
@@ -58,7 +63,19 @@ export class RegisterService {
     return this.http.get<Card>("http://localhost:9191/cards/viewEmiCard/" + userId);
   }
  
-  createTransaction(transProductCard: TransProductCard): Observable<Transaction> {
-    return this.http.post<Transaction>("http://localhost:9191/transaction/addTransaction", transProductCard);
+  createTransaction(transaction: Transaction): Observable<Transaction> {
+    return this.http.post<Transaction>("http://localhost:9191/transaction/addTransaction", transaction);
+  }
+
+  viewAllTransactions(emiCardNo:number): Observable<any> {
+    return this.http.get("http://localhost:9191/transaction/viewAllTransactions/"+emiCardNo);
+  }
+
+  updateEmi(transaction: Transaction): Observable<Transaction> {
+    return this.http.put<Transaction>("http://localhost:9191/transaction/updateTransaction", transaction);
+  }
+
+  updateCard(card: Card): Observable<Card> {
+    return this.http.put<Card>("http://localhost:9191/cards/updateCard", card);
   }
 }

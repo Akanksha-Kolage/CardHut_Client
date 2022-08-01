@@ -32,7 +32,6 @@ export class ViewUsersComponent implements OnInit {
           this.user.eligible = bool;
         }
     );
-    alert("activate");
     window.location.reload();
   }
 

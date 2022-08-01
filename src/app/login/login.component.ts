@@ -27,7 +27,7 @@ export class LoginComponent implements OnInit {
           if(logResp.user!=null){
             if(logResp.user.eligible){         
 
-              sessionStorage.setItem("userInfo", JSON.stringify(logResp.user))
+              sessionStorage.setItem("userInfo", JSON.stringify(logResp.user));
   
               this.router.navigate(['/dashboard']);
   

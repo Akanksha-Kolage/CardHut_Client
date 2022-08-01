@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { Product } from '../product';
+import { ProductPic } from '../product-pic';
 import { RegisterService } from '../register.service';
 
 @Component({
@@ -20,13 +21,35 @@ export class AddProductComponent implements OnInit {
   addProduct() {
     this.registerService.addProduct(this.product)
       .subscribe(
-        msg => {
-          this.message = msg;
+        data => {
+          this.message = data.msg;
+          this.product = data.product;
           console.log(JSON.stringify(this.message));
           alert(this.message);
           this.route.navigate(['/addProduct']);
         }
     );
   } 
+
+  productId: any;
+  productPic: any;
+
+
+  onFileChange(event) {
+    this.productPic = event.target.files[0];
+  }
+
+  upload() {
+    let formData = new FormData();
+    formData.append('productId', this.product.productId.toString());
+    formData.append('productPic', this.productPic);
+    this.registerService.uploadProductPic(formData)
+      .subscribe(
+        data => {
+          alert(JSON.stringify(data));
+        }
+    );
+    window.location.reload();
+  }
 
 }

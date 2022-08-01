@@ -3,74 +3,128 @@
         <div class="col-lg-6">
             <h3 class="text-center m-4">Sign Up</h3>
             <br>
-            <h5 style="color:red; font-weight:bold">{{message}}</h5>
+            <h5 style="color:green; font-weight:bold">{{message}}</h5>
             <br>
             <div class="card chapterCard">
                 <div class="card-body">
 
                     <form #registerForm="ngForm" (ngSubmit)="register()">
-                        <div class="form-group">
-                            <div class="row ">
+                        <!-- <div class="form-group"> -->
+                            <div class="row">
                                 <label class=" col-lg-4">Full Name :</label>
-                                <input type="text" #fullName="ngModel" id="fullName" class="form-control col-lg-8" placeholder="Enter your name"
-                                    id="fullName" name="fullName" [(ngModel)]="user.fullName" [ngClass]="{'red-border-class':fullName.errors?.['required']}" 
-                                    pattern="[a-zA-Z\s]" required> <br><br>
-                                    <!-- <ul class="alert-error" *ngIf="fullName.touched && fullName.errors">
-                                        <li style="list-style: none; color:red;" *ngIf="fullName.errors?.['required']"> Name is required. </li>
-                                        <li *ngIf="fullName.errors?.['pattern']">Invalid name.</li>
-                                    </ul> -->
-                                    <!-- <div *ngIf="uname.touched && uname.invalid">
-                                        <div class="row"><span class="col-lg" style="color:red;">Please enter your name</span></div>
-                                    </div><br>  -->
-                                <!--div class=" col-lg-2"></div-->
-                                <!-- <label class=" col-lg-4">DOB :</label>
-                                <input type="date" class="form-control col-lg-8" value="" id="userDate" name="userDate"
-                                    required> <br><br> -->
+                                <input type="text" id="fullName" class="form-control col-lg-8" placeholder="Enter your name"
+                                    id="fullName" name="fullName" [(ngModel)]="user.fullName" #fullName="ngModel" pattern="[a-zA-Z\s]*" required>
+                            </div>
+                            <div class="row mb-0">
+                                <ul class="alert-error" style="margin-left: 200px;" *ngIf="fullName.touched && fullName.errors">
+                                    <li style="list-style: none; color:red;" *ngIf="fullName.errors?.['required']">Name is required. </li>
+                                    <li style="list-style: none; color:red;" *ngIf="fullName.errors?.['pattern']">Invalid name.</li>
+                                </ul>
+                            </div>
+                    
+                            <div class="row mt-2">
                                 <label class=" col-lg-4">Email :</label>
                                 <input type="email" class="form-control col-lg-8" placeholder="Enter your email-id"
-                                    id="email" name="email" [(ngModel)]="user.email" required> <br><br>
-                                <!--div class=" col-lg-2"></div-->
+                                    id="email" name="email" [(ngModel)]="user.email" #email="ngModel" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$" required>
+                            </div>
+                            <div class="row mb-0">
+                                <ul class="alert-error" style="margin-left: 200px;" *ngIf="email.invalid && (email.touched || email.dirty )">
+                                    <li style="list-style: none; color:red;" *ngIf="email.errors?.['required']">Email is required. </li>
+                                    <li style="list-style: none; color:red;" *ngIf="email.errors?.['pattern']">Invalid email.</li>
+                                </ul>
+                            </div>
+
+                            <div class="row mt-2">
                                 <label class=" col-lg-4">Phone No. :</label>
                                 <input type="text" class="col-lg-8 form-control" placeholder="Enter phone no."
-                                    value="" name="userPhone" [(ngModel)]="user.userPhone" required> <br><br>
+                                    id="userPhone" name="userPhone" [(ngModel)]="user.userPhone" #userPhone="ngModel" pattern="[0-9]{10}$" required>
+                            </div>
+                            <div class="row mb-0">
+                                <ul class="alert-error" style="margin-left: 200px;" *ngIf="userPhone.invalid && (userPhone.touched || userPhone.dirty )">
+                                    <li style="list-style: none; color:red;" *ngIf="userPhone.errors?.['required']">Mobile number is required. </li>
+                                    <li style="list-style: none; color:red;" *ngIf="userPhone.errors?.['pattern']">Invalid mobile number.</li>
+                                </ul>
+                            </div>
+
+                            <div class="row mt-2">
                                 <label class=" col-lg-4">Password :</label>
                                 <input type="password" class="col-lg-8 form-control" placeholder="Enter password"
-                                    value="" name="userPassword" [(ngModel)]="user.userPassword" required> <br><br>
-                                <!-- <label class=" col-lg-4">Confirm Password :</label>
-                                <input type="password" class="col-lg-8 form-control" placeholder="Enter phone no."
-                                    value="" name="userPhone" required> <br><br> -->
-                                <label class=" col-lg-4">Address :</label>
-                                <input type="text" class="col-lg-8 form-control" placeholder="Enter address" value=""
-                                    name="userAddress" [(ngModel)]="user.userAddress" required> <br><br>
+                                 name="userPassword" [(ngModel)]="user.userPassword" #userPassword="ngModel" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{4,}" required>
+                            </div>
+                            <div class="row mb-0">
+                                <ul class="alert-error" style="margin-left: 200px;" *ngIf="userPassword.invalid && (userPassword.touched || userPassword.dirty )">
+                                    <li style="list-style: none; color:red;" *ngIf="userPassword.errors?.['required']">Password is required. </li>
+                                    <li style="list-style: none; color:red;" *ngIf="userPassword.errors?.['pattern']">Not a strong password.</li>
+                                </ul>
+                            </div>
 
+                            <div class="row mt-2">
+                                    <label class=" col-lg-4">Address :</label>
+                                <input type="text" class="col-lg-8 form-control" placeholder="Enter address" value=""
+                                    name="userAddress" [(ngModel)]="user.userAddress" #userAddress="ngModel" required>
+                            </div>
+                            <div class="row mb-0">
+                                <ul class="alert-error" style="margin-left: 200px;" *ngIf="userAddress.invalid && (userAddress.touched)">
+                                    <li style="list-style: none; color:red;" *ngIf="userAddress.errors?.['required']">Address is required. </li>
+                                </ul>
+                            </div>
+
+                            <div class="row mt-2">
                                 <label class=" col-lg-4">Card Type:</label>
                                 <input type="radio" class="col-lg-2 form-control " value="Gold" name="cardType" [(ngModel)]="user.cardType"
                                     required> Gold
                                 <input type="radio" class="col-lg-2 form-control" value="Titanium" name="cardType" [(ngModel)]="user.cardType"
-                                    required>Titanium <br><br>
+                                    required>Titanium 
+                            </div>
+
+                            <div class="row mt-2">
                                 <label class=" col-lg-4">Bank Name :</label>
                                 <input type="text" class="col-lg-8 form-control" placeholder="Enter bank name" value=""
-                                    name="userBank" [(ngModel)]="user.userBank" required> <br><br>
+                                    name="userBank" [(ngModel)]="user.userBank" #userBank="ngModel" required>
+                            </div>
+                            <div class="row mb-0">
+                                <ul class="alert-error" style="margin-left: 200px;" *ngIf="userBank.invalid && (userBank.touched)">
+                                    <li style="list-style: none; color:red;" *ngIf="userBank.errors?.['required']">Bank name is required. </li>
+                                </ul>
+                            </div>
+
+                            <div class="row mt-2">
                                 <label class=" col-lg-4">Account No. :</label>
                                 <input type="text" class="col-lg-8 form-control" placeholder="Enter account no."
-                                    value="" name="userAccountNo" [(ngModel)]="user.userAccountNo" required> <br><br>
+                                    value="" name="userAccountNo" [(ngModel)]="user.userAccountNo" #userAccountNo="ngModel" pattern="[0-9]{12}$" required>
+                            </div>
+                            <div class="row mb-0">
+                                <ul class="alert-error" style="margin-left: 200px;"
+                                    *ngIf="userAccountNo.invalid && (userAccountNo.touched || userAccountNo.dirty )">
+                                    <li style="list-style: none; color:red;" *ngIf="userAccountNo.errors?.['required']">Account number is required. </li>
+                                    <li style="list-style: none; color:red;" *ngIf="userAccountNo.errors?.['pattern']">Enter valid account number.</li>
+                                </ul>
+                            </div>
+
+                            <div class="row mt-2">
                                 <label class=" col-lg-4">IFSC Code :</label>
                                 <input type="text" class="col-lg-8 form-control" placeholder="Enter IFSC code"
-                                    value="" name="userIfsc" [(ngModel)]="user.userIfsc" required> <br><br>
-                                <button type="submit" class="btn login-button" name="submit" >Submit</button><br><br>
-
-                                
-    
-
+                                    value="" name="userIfsc" [(ngModel)]="user.userIfsc" #userIfsc="ngModel" pattern="[A-Z0-9]{10}$" required>
                             </div>
-                        </div>
-                        <div style="color: green;">{{message}}</div>
+                            <div class="row mb-0">
+                                <ul class="alert-error" style="margin-left: 200px;" *ngIf="userIfsc.invalid && (userIfsc.touched)">
+                                    <li style="list-style: none; color:red;" *ngIf="userIfsc.errors?.['required']">IFCS code is required. </li>
+                                    <li style="list-style: none; color:red;" *ngIf="userIfsc.errors?.['pattern']">Enter valid IFSC code.</li>
+
+                                </ul>
+                            </div>
+
+                            <div class="row mt-2">
+                                <button type="submit" class="btn login-button" name="submit" >Submit</button>
+                            </div>
+                        <!-- </div> -->
+                        <!-- <div style="color: green;">{{message}}</div> -->
                     </form>
                 </div>
             </div>
         </div>
         <div class="col-lg-6">
-            <h2 class="text-center m-5">How To Avail EMI</h2>
+            <h2 class="text-center m-3">How To Avail EMI</h2>
 
             <div class="extra-div">
                 <div class="row m-0 ">

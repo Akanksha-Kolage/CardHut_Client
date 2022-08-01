@@ -2,6 +2,7 @@ import { Component, NgIterable, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { Product } from '../product';
 import { RegisterService } from '../register.service';
+import { User } from '../user';
 
 @Component({
   selector: 'app-products',
@@ -12,11 +13,13 @@ export class ProductsComponent implements OnInit {
 
   products: NgIterable<Product>;
   product: Product = new Product();
-
+  user: User = new User();
+  
   constructor(private registerService: RegisterService, private route: Router) { }
 
 
   ngOnInit(): void {
+    this.user = JSON.parse(sessionStorage.getItem("userInfo"));
     this.registerService.viewAllProducts()
       .subscribe(
         data => {

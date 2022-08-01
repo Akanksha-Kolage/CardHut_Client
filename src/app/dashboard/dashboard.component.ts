@@ -27,9 +27,8 @@ export class DashboardComponent implements OnInit {
         c => {
           this.card = c;
           sessionStorage.setItem("cardInfo", JSON.stringify(this.card));
-          console.log(c);
+          console.log(this.card);
           this.cardno = "3346-4555-6924-" + JSON.stringify(this.card.emiCardNo);
-          console.log(this.cardno);
         }
     );
     
