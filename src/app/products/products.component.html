@@ -37,7 +37,10 @@
                     <a class="dropdown-item" href="#" [routerLink]="['/transactions']">Your Transactions</a>
                     <a class="dropdown-item" href="#"></a>
                     <div class="dropdown-divider"></div>
-                    <a class="dropdown-item" href="#" [routerLink]="['/login']">Logout</a>
+                    <form (ngSubmit)="logOut()">
+                        <button type="submit">Logout</button>
+                    </form>
+                    <!-- <a class="dropdown-item" href="#" [routerLink]="['/login']">Logout</a> -->
                 </div>
             </li>
         </ul>
@@ -50,25 +53,25 @@
 <div class="sub-navigation">
     <ul class="nav justify-content-center">
         <li class="nav-item">
-            <a class="nav-link sub-nav-link active" href="#">All Categories</a>
+            <a class="nav-link sub-nav-link active">All Categories</a>
         </li>
         <li class="nav-item">
-            <a class="nav-link sub-nav-link active" href="#">Accesories</a>
+            <a class="nav-link sub-nav-link active">Accesories</a>
         </li>
         <li class="nav-item">
-            <a class="nav-link sub-nav-link active" href="#">Mobile</a>
+            <a class="nav-link sub-nav-link active">Mobile</a>
         </li>
         <li class="nav-item">
-            <a class="nav-link sub-nav-link" href="#">Women's Fashion</a>
+            <a class="nav-link sub-nav-link">Women's Fashion</a>
         </li>
         <li class="nav-item">
-            <a class="nav-link sub-nav-link" href="#">Men's Fashion</a>
+            <a class="nav-link sub-nav-link">Men's Fashion</a>
         </li>
         <li class="nav-item">
-            <a class="nav-link sub-nav-link" href="#">Kids Fashion</a>
+            <a class="nav-link sub-nav-link">Kids Fashion</a>
         </li>
         <li class="nav-item">
-            <a class="nav-link sub-nav-link" href="#">Home & Furniture</a>
+            <a class="nav-link sub-nav-link">Home & Furniture</a>
         </li>
     </ul>
 </div>
@@ -80,7 +83,7 @@
     <div class="product-category">
 
         <h3 class="mb-3 pull-left">Newly Added Products</h3>
-        <button class="btn card-button pull-right">Explore All</button><br><br><br>
+        <br><br><br>
 
         <!-- ---------------------------------------- Row 1 start ------------------------------------------------->
         <div class="row">

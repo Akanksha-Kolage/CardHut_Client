@@ -17,18 +17,26 @@ export class TransactionsComponent implements OnInit {
   card: Card = new Card();
   transaction: Transaction = new Transaction();
   user: User = new User();
-  constructor(private registerService: RegisterService, private route: Router) { }
+  constructor(private registerService: RegisterService, private route: Router) { 
+    
+  }
 
   ngOnInit(): void {
-    this.user = JSON.parse(sessionStorage.getItem("userInfo"));
-    this.card = JSON.parse(sessionStorage.getItem("cardInfo"));
-    this.registerService.viewAllTransactions(this.card.emiCardNo)
-      .subscribe(
-        data => {
-          this.transactions = data;
-          console.log(this.transactions);
-        }
-      )
+    if(sessionStorage.getItem("userInfo")==null){
+      this.route.navigate(['/login']);
+    }
+      else{
+      this.user = JSON.parse(sessionStorage.getItem("userInfo"));
+      this.card = JSON.parse(sessionStorage.getItem("cardInfo"));
+      this.registerService.viewAllTransactions(this.card.emiCardNo)
+        .subscribe(
+          data => {
+            this.transactions = data;
+            console.log(this.transactions);
+          }
+        )
+    }
+
   }
 
   updateEmi(t:Transaction) {
@@ -46,7 +54,16 @@ export class TransactionsComponent implements OnInit {
           );
         }
       );
-    // window.location.reload();
+    window.location.reload();
+  }
+  logOut(){
+    console.log("log out");
+    sessionStorage.removeItem("userInfo");
+    sessionStorage.removeItem("cardInfo");
+    sessionStorage.removeItem("productInfo");
+    sessionStorage.removeItem("transactionInfo");
+    this.route.navigate(['/login']);
+
   }
 
 }

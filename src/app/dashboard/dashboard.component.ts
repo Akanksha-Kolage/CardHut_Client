@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { Card } from '../card';
 import { RegisterService } from '../register.service';
 import { User } from '../user';
@@ -14,11 +15,17 @@ export class DashboardComponent implements OnInit {
   card: Card = new Card();
   cardno: string;
 
-  constructor(private registerService: RegisterService) { }
+  constructor(private registerService: RegisterService,private router:Router) { }
 
   ngOnInit(): void {
-    this.user = JSON.parse(sessionStorage.getItem("userInfo"));
-    this.getCardById();
+    if(sessionStorage.getItem("userInfo")==null){
+      this.router.navigate(['/login']);
+    }
+    else{
+      this.user = JSON.parse(sessionStorage.getItem("userInfo"));
+      this.getCardById();
+    }
+    
   }
 
   getCardById() {
@@ -32,6 +39,15 @@ export class DashboardComponent implements OnInit {
         }
     );
     
+  }
+
+  logOut(){
+    sessionStorage.removeItem("userInfo");
+    sessionStorage.removeItem("cardInfo");
+    sessionStorage.removeItem("productInfo");
+    sessionStorage.removeItem("transactionInfo");
+    this.router.navigate(['/login']);
+
   }
 
 }

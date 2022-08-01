@@ -19,8 +19,12 @@
                 <li class="nav-item mr-5" style="color:#191970">
                     <i class="fa fa-user fa-lg ml-2 mr-2" style="color:#191970;"></i>ADMin
                 </li>
+
                 <li class="nav-item mr-2">
-                    <a style="color:#191970 ;" href="#" [routerLink]="['/adminLogin']">Logout</a>
+                    <form (ngSubmit)="logOut()">
+                        <button type="submit">Logout</button>
+                    </form>
+                    <!-- <a style="color:#191970 ;" href="#" [routerLink]="['/adminLogin']">Logout</a> -->
                 </li>
 
             </ul>

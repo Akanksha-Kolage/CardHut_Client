@@ -23,6 +23,7 @@ export class AdminLoginComponent implements OnInit {
     .subscribe(
       validation => {
         if(validation){
+          sessionStorage.setItem("adminInfo",JSON.stringify(this.adminLogin));
           this.router.navigate(['/adminDashboard']);
         }
         else {

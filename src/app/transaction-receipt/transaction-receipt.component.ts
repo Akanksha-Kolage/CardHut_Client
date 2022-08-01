@@ -17,8 +17,26 @@ export class TransactionReceiptComponent implements OnInit {
   constructor(private registerService: RegisterService, private route: Router) { }
 
   ngOnInit(): void {
-    this.user = JSON.parse(sessionStorage.getItem("userInfo"));
-    this.transaction = JSON.parse(sessionStorage.getItem("transactionInfo"));
+    // this.user = JSON.parse(sessionStorage.getItem("userInfo"));
+    if(sessionStorage.getItem("userInfo")==null){
+      this.route.navigate(['/login']);
+    }
+    else{
+      this.user = JSON.parse(sessionStorage.getItem("userInfo"));
+      this.transaction = JSON.parse(sessionStorage.getItem("transactionInfo"));
+
+
+    }
+  }
+
+  logOut(){
+    console.log("log out");
+    sessionStorage.removeItem("userInfo");
+    sessionStorage.removeItem("cardInfo");
+    sessionStorage.removeItem("productInfo");
+    sessionStorage.removeItem("transactionInfo");
+    this.route.navigate(['/login']);
+
   }
 
 }

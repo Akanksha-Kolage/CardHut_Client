@@ -17,13 +17,20 @@ export class ViewProductsComponent implements OnInit {
   constructor(private registerService:RegisterService, private route:Router) { }
 
   ngOnInit(): void {
-    this.registerService.viewAllProducts()
-      .subscribe(
-        data => {
-          this.products = data;
-          console.log(this.products);
-      }
-    )
+    if(JSON.parse(sessionStorage.getItem("adminInfo"))==null){
+      this.route.navigate(['/adminLogin']);
+
+    }
+    else{
+        this.registerService.viewAllProducts()
+        .subscribe(
+          data => {
+            this.products = data;
+            console.log(this.products);
+        }
+      )
+    }
+
   }
 
   edit(productId: number) {
@@ -37,6 +44,12 @@ export class ViewProductsComponent implements OnInit {
         }
     );
    
+  }
+
+  logOut(){
+    sessionStorage.removeItem('adminInfo');
+    sessionStorage.removeItem('ProductDetails');
+    this.route.navigate(['/adminLogin']);
   }
 
 }

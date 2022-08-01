@@ -21,7 +21,9 @@
                     <i class="fa fa-user fa-lg ml-2 mr-2" style="color:#191970;"></i>{{user.fullName}}
                 </li>
                 <li class="nav-item mr-2">
-                    <a style="color:#191970 ;" href="#" [routerLink]="['/login']">Logout</a>
+                    <form (ngSubmit)="logOut()">
+                    <button type="submit" style="color:#191970 ;">Logout</button>
+                   </form>
                 </li>
 
             </ul>

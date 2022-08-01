@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { Product } from '../product';
 import { RegisterService } from '../register.service';
 import { UpdateProduct } from '../update-product';
@@ -13,11 +14,18 @@ export class EditProductComponent implements OnInit {
   product: Product = new Product();
   updateMessage: string;
 
-  constructor(private registerService: RegisterService) { }
+  constructor(private registerService: RegisterService,private route:Router) { }
 
   ngOnInit(): void {
-    this.product = JSON.parse(sessionStorage.getItem("ProductDetails"));
-    console.log(this.product);
+    if(JSON.parse(sessionStorage.getItem("ProductDetails"))==null){
+       this.route.navigate(['/adminLogin']);
+
+    }
+    else{
+      this.product = JSON.parse(sessionStorage.getItem("ProductDetails"));
+       
+    }
+
   }
 
   editProduct() {
@@ -34,6 +42,11 @@ export class EditProductComponent implements OnInit {
     );
     window.location.reload();
 
+  }
+  logOut(){
+    sessionStorage.removeItem('adminInfo');
+    sessionStorage.removeItem('ProductDetails');
+    this.route.navigate(['/adminLogin']);
   }
 
 }

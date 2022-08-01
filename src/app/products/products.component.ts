@@ -19,14 +19,21 @@ export class ProductsComponent implements OnInit {
 
 
   ngOnInit(): void {
-    this.user = JSON.parse(sessionStorage.getItem("userInfo"));
-    this.registerService.viewAllProducts()
-      .subscribe(
-        data => {
-          this.products = data;
-          console.log(this.products);
-        }
-      )
+    if(sessionStorage.getItem("userInfo")==null){
+      this.route.navigate(['/login']);
+    }
+    else{
+     this.user = JSON.parse(sessionStorage.getItem("userInfo"));
+     this.registerService.viewAllProducts()
+     .subscribe(
+       data => {
+         this.products = data;
+         console.log(this.products);
+       }
+     )
+
+    }
+
   }
 
   viewProduct(productId:number) {
@@ -39,6 +46,16 @@ export class ProductsComponent implements OnInit {
           this.route.navigate(['/productInfo']);
         }
       );
+  }
+
+  logOut(){
+    console.log("log out");
+    sessionStorage.removeItem("userInfo");
+    sessionStorage.removeItem("cardInfo");
+    sessionStorage.removeItem("productInfo");
+    sessionStorage.removeItem("transactionInfo");
+    this.route.navigate(['/login']);
+
   }
 
 }

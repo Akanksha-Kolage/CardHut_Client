@@ -1,3 +1,4 @@
+import { JsonPipe } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { Product } from '../product';
@@ -16,6 +17,9 @@ export class AddProductComponent implements OnInit {
   constructor(private registerService: RegisterService, private route: Router) { }
 
   ngOnInit(): void {
+    if(JSON.parse(sessionStorage.getItem("adminInfo"))==null){
+      this.route.navigate(['/adminLogin']);
+    }
   }
   
   addProduct() {
@@ -50,6 +54,12 @@ export class AddProductComponent implements OnInit {
         }
     );
     window.location.reload();
+  }
+
+ logOut(){
+    sessionStorage.removeItem('adminInfo');
+    sessionStorage.removeItem('ProductDetails');
+    this.route.navigate(['/adminLogin']);
   }
 
 }

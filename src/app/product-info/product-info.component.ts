@@ -24,9 +24,17 @@ export class ProductInfoComponent implements OnInit {
   constructor(private registerService: RegisterService, private route: Router) { }
 
   ngOnInit(): void {
-    this.user = JSON.parse(sessionStorage.getItem("userInfo"));
-    this.transaction.product = JSON.parse(sessionStorage.getItem("BuyProductDetails"));
-    this.transaction.emiCard = JSON.parse(sessionStorage.getItem("cardInfo"));
+    // this.user = JSON.parse(sessionStorage.getItem("userInfo"));
+    if(JSON.parse(sessionStorage.getItem("userInfo"))==null){
+      this.route.navigate(['/login']);
+    }
+    else{
+      this.user = JSON.parse(sessionStorage.getItem("userInfo"));
+      this.transaction.product = JSON.parse(sessionStorage.getItem("BuyProductDetails"));
+      this.transaction.emiCard = JSON.parse(sessionStorage.getItem("cardInfo"));
+
+    }
+    
     // console.log(this.transaction.product);
     // console.log(this.transaction.emiCard);
     // this.totalAmount= this.transaction.product.productCost + 0.032 * (this.transaction.product.productCost);
@@ -69,7 +77,20 @@ export class ProductInfoComponent implements OnInit {
     else {
       alert("Insufficient Balance.")
     }
+
+
     
+  }
+
+
+  logOut(){
+    console.log("log out");
+    sessionStorage.removeItem("userInfo");
+    sessionStorage.removeItem("cardInfo");
+    sessionStorage.removeItem("productInfo");
+    sessionStorage.removeItem("transactionInfo");
+    this.route.navigate(['/login']);
+
   }
 
 }

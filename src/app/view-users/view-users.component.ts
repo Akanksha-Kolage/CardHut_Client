@@ -16,13 +16,20 @@ export class ViewUsersComponent implements OnInit {
   constructor(private registerService: RegisterService, private route:Router) { }
 
   ngOnInit(): void {
-    this.registerService.viewAllUsers()
+    if(JSON.parse(sessionStorage.getItem("adminInfo"))==null){
+      this.route.navigate(['/adminLogin']);
+
+    }
+    else{
+      this.registerService.viewAllUsers()
       .subscribe(
         data => {
           this.users = data;
           console.log(this.users);
         }
       )
+    }
+
   }
 
   activate(userId:number) {
@@ -33,6 +40,11 @@ export class ViewUsersComponent implements OnInit {
         }
     );
     window.location.reload();
+  }
+  logOut(){
+    sessionStorage.removeItem('adminInfo');
+    sessionStorage.removeItem('ProductDetails');
+    this.route.navigate(['/adminLogin']);
   }
 
 }
