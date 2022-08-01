@@ -22,8 +22,11 @@ export class AdminLoginComponent implements OnInit {
     this.registerService.adminLogin(this.adminLogin)
     .subscribe(
       validation => {
+        console.log(this.adminLogin.password);
+        console.log(this.adminLogin.username);
         if(validation){
           sessionStorage.setItem("adminInfo",JSON.stringify(this.adminLogin));
+         
           this.router.navigate(['/adminDashboard']);
         }
         else {

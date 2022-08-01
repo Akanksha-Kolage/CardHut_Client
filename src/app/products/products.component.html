@@ -37,9 +37,11 @@
                     <a class="dropdown-item" href="#" [routerLink]="['/transactions']">Your Transactions</a>
                     <a class="dropdown-item" href="#"></a>
                     <div class="dropdown-divider"></div>
-                    <form (ngSubmit)="logOut()">
-                        <button type="submit">Logout</button>
-                    </form>
+                        <form (ngSubmit)="logOut()">
+                            <button type="submit" style="color:#191970 ; border:none; background-color:transparent"><b>LOGOUT</b></button>
+                        </form>
+                  
+                   
                     <!-- <a class="dropdown-item" href="#" [routerLink]="['/login']">Logout</a> -->
                 </div>
             </li>
@@ -139,9 +141,16 @@
                     </a>
                 </div>
                 <div class="col-lg-4 col-sm-4">
-                    <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit.
-                        Esse, repellendus quam, nemo, officia adipisci voluptas architecto nobis accusamus eaque
-                        ratione at necessitatibus soluta harum eos quisquam cum consequatur totam est.</p>
+                    <h3>Top Selling Styles</h3>
+                <b><i>
+                        <li>Sarees, 
+                       Kurtas</li>
+                        <li>Salwar suits, 
+                      Dresses</li>
+                        <li>T-Shirts, 
+                     Jeans</li></i></b>
+                    and many more....<br><br>
+                    <h4 style="color:#191970"><i>"Save Money With CardHut"</i></h4>
                     <button class="btn card-button">View More</button>
                 </div>
             </div>
@@ -193,6 +202,7 @@
         </div>
     </section>
 </section>
+<div class="text-center" style="height:50px; background-color:black; color:white">CardHut.com</div>
 
 <!------------------------------------- small collections end --------------------------------------------------->
 

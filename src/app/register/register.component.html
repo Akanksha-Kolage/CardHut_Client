@@ -1,6 +1,6 @@
-<div class="reg-section">
+<div class="reg-section ml-5">
     <div class="row m-0">
-        <div class="col-lg-6">
+        <div class="col-lg-5">
             <h3 class="text-center m-4">Sign Up</h3>
             <br>
             <h5 style="color:green; font-weight:bold">{{message}}</h5>
@@ -10,7 +10,7 @@
 
                     <form #registerForm="ngForm" (ngSubmit)="register()">
                         <!-- <div class="form-group"> -->
-                            <div class="row">
+                            <div class="row"><br>
                                 <label class=" col-lg-4">Full Name :</label>
                                 <input type="text" id="fullName" class="form-control col-lg-8" placeholder="Enter your name"
                                     id="fullName" name="fullName" [(ngModel)]="user.fullName" #fullName="ngModel" pattern="[a-zA-Z\s]*" required>
@@ -123,31 +123,32 @@
                 </div>
             </div>
         </div>
-        <div class="col-lg-6">
-            <h2 class="text-center m-3">How To Avail EMI</h2>
+        <div class="col-lg-7">
+            <h2 class="text-center m-4">How To Avail EMI</h2>
 
-            <div class="extra-div">
+            <div class="extra-div text-center">
                 <div class="row m-0 ">
                     <div class="col-lg-3 card-text">
                         <h1 class="text-center main-heading">1</h1>
-                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Aperiam fugit quam dignissimos,
-                        pariatur officiis quos doloremque quasi consequuntur doloribus itaque?
+                        Register on CardHut.com. Choose your card type.
                     </div>
                     <div class="col-lg-3 card-text">
                         <h1 class="text-center main-heading">2</h1>
-                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Aperiam fugit quam dignissimos,
-                        pariatur officiis quos doloremque quasi consequuntur doloribus itaque?
+                        Once your account gets's activated, login with your user id and password.
                     </div>
                     <div class="col-lg-3 card-text">
                         <h1 class="text-center main-heading">3</h1>
-                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Aperiam fugit quam dignissimos,
-                        pariatur officiis quos doloremque quasi consequuntur doloribus itaque?
+                        Go to the CardHut store, choose your product and EMI scheme, buy product.
+                    </div>
+                    <div class="col-lg-3 card-text">
+                        <h1 class="text-center main-heading">4</h1>
+                        Enjoy Shopping !
                     </div>
                 </div>
 
             </div>
             <div class="text-center mt-5">
-                <h5>Member of</h5>
+                <h5>Already Member of</h5>
                 <div class="main-heading mt-0">CardHut</div><br>
                 <button type="submit" class="btn login-button " name="login" [routerLink]="['/login']">Login</button>
             </div>
