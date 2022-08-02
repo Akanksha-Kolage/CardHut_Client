@@ -73,11 +73,11 @@
             </div>
         </form>
 
-        <form enctype="multipart/form-data" (ngSubmit)="upload()">
+        <form #addproductImage="ngForm" enctype="multipart/form-data" (ngSubmit)="upload()">
             <div class="form-group">
                 <label for="productImage">Upload product image : </label>
-                <input value="" name="productImage" type="file" (change)="onFileChange($event)">
-                <button type="submit" class="btn login-button" style="width:100px">Upload</button>
+                <input value="" id="productImage" name="productImage" #productImage="ngModel" [(ngModel)]="product.productImage" required type="file" (change)="onFileChange($event)">
+                <button type="submit" class="btn login-button" style="width:100px" [disabled]="!addproductImage.form.valid">Upload</button>
             </div>
         </form>
 

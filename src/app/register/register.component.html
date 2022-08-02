@@ -3,11 +3,14 @@
         <div class="col-lg-5">
             <h3 class="text-center m-4">Sign Up</h3>
             <br>
+            <div *ngIf="boolLoader">
+                <app-loader></app-loader>
+            </div>
             <h5 style="color:green; font-weight:bold">{{message}}</h5>
             <br>
             <div class="card chapterCard">
                 <div class="card-body">
-
+                    
                     <form #registerForm="ngForm" (ngSubmit)="register(); registerForm.resetForm()">
                         <!-- <div class="form-group"> -->
                             <div class="row"><br>
@@ -115,7 +118,7 @@
                             </div>
 
                             <div class="row mt-2">
-                                <button type="submit" class="btn login-button" name="submit" >Submit</button>
+                                <button type="submit" class="btn login-button" name="submit" [disabled]="!registerForm.form.valid" >Submit</button>
                             </div>
                         <!-- </div> -->
                         <!-- <div style="color: green;">{{message}}</div> -->

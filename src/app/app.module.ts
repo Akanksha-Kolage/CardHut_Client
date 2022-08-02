@@ -23,6 +23,7 @@ import { AddProductComponent } from './add-product/add-product.component';
 import { EditProductComponent } from './edit-product/edit-product.component';
 import { ViewTransactionsComponent } from './view-transactions/view-transactions.component';
 import { EncrypDecrypService } from './encryp-decryp.service';
+import { LoaderComponent } from './loader/loader.component';
 
 @NgModule({
   declarations: [
@@ -43,7 +44,8 @@ import { EncrypDecrypService } from './encryp-decryp.service';
     ViewProductsComponent,
     AddProductComponent,
     EditProductComponent,
-    ViewTransactionsComponent
+    ViewTransactionsComponent,
+    LoaderComponent
   ],
   imports: [
     BrowserModule,

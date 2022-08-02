@@ -61,7 +61,7 @@
                         <p class="product-description">{{transaction.product.productDescription}}</p>
                         <h4 class="price">Price: <span>&#8377; {{transaction.product.productCost}}</span></h4>
                         <p class="vote"><strong>91%</strong> of buyers enjoyed this product! <strong>(87 votes)</strong></p>
-                        
+                        <form #getEmiForm="ngForm" (ngSubmit)="createTransaction()">
                             <label for="emiScheme"><b>EMI Scheme:</b></label>
                             <select name="emiScheme" [(ngModel)]="transaction.emiScheme" #emiScheme="ngModel" required id="emiScheme" style="width: 50%;" class="form-control">
                                 <!-- <option selected="selected">--select EMI Scheme--</option> -->
@@ -70,14 +70,15 @@
                                 <option value="9">9 months</option>
                                 <option value="12">12 months</option>
                             </select>
-                            <div class="row mb-0">
-                                <ul class="alert-error" *ngIf="emiScheme.touched && emiScheme.errors">
-                                    <li style="list-style: none; color:red;" *ngIf="emiScheme.errors?.['required']">Emi Scheme is required. </li>                                </ul>
+                            <div class="row mb-0 ml-2">
+                                <div class="alert-error" *ngIf="emiScheme.touched && emiScheme.errors">
+                                    <p style="list-style: none; color:red;" *ngIf="emiScheme.errors?.['required']">Emi Scheme is required. </p> 
+                                </div>
                             </div>
                             <!-- <button type="button" class="btn btn-outline-dark" [routerLink]="['/transactionReceipt']">Buy Now</button> -->
-                        <form #getEmiForm="ngForm" (ngSubmit)="createTransaction()">
+                       
                             <div class="action">
-                                <button class="add-to-cart btn btn-default mt-3 mr-3" type="submit">BUY NOW</button>
+                                <button class="add-to-cart btn btn-default mt-3 mr-3" type="submit" [disabled]="!getEmiForm.form.valid">BUY NOW</button>
                                 <button class="like btn btn-default mt-3" type="button"><span class="fa fa-heart"></span></button>
                             </div>
                         </form>

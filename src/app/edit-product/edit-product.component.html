@@ -72,7 +72,7 @@
                     <input type="file" class="form-control-file" id="productImage" [(ngModel)]="product.productImage" name="productImage">
                 </div>
                 <div class="form-group text-center">
-                    <button type="submit" class="btn login-button">Edit Product</button>
+                    <button type="submit" class="btn login-button" [disabled]="!editproductFrom.form.valid">Edit Product</button>
                 </div>
             </form>
         </div>
