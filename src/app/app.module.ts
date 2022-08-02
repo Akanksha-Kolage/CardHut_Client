@@ -21,6 +21,7 @@ import { AdminDashboardComponent } from './admin-dashboard/admin-dashboard.compo
 import { ViewProductsComponent } from './view-products/view-products.component';
 import { AddProductComponent } from './add-product/add-product.component';
 import { EditProductComponent } from './edit-product/edit-product.component';
+import { EncrypDecrypService } from './encryp-decryp.service';
 
 @NgModule({
   declarations: [
@@ -48,7 +49,9 @@ import { EditProductComponent } from './edit-product/edit-product.component';
     FormsModule,
     HttpClientModule
   ],
-  providers: [],
+  providers: [
+    EncrypDecrypService
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

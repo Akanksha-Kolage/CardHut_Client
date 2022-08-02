@@ -97,10 +97,10 @@
                         <td>{{t.totalAmount | number: '1.1-2'}}</td>
                         <td>
                             <form #payButton="ngForm" (ngSubmit)="updateEmi(t)">
-                                <div *ngIf="t.balanceAmount==0">
+                                <div *ngIf="t.emiRemaining==0">
                                     <button disabled class="btn btn-secondary">PAY</button>
                                 </div>
-                                <div *ngIf="t.balanceAmount!=0">
+                                <div *ngIf="t.emiRemaining!=0">
                                     <button class="btn btn-primary">PAY</button>
                                 </div>
                             </form>

@@ -1,6 +1,6 @@
 import { User } from "./user";
 
-export class LoginResponse {
-    message:string;
+export class UpdateUser {
     user:User;
+    message:string;
 }

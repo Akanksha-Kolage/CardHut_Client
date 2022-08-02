@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { EncrypDecrypService } from '../encryp-decryp.service';
 import { RegisterService } from '../register.service';
 import { User } from '../user';
 
@@ -12,13 +13,15 @@ export class RegisterComponent implements OnInit {
   message:string;
  
 
-  constructor(private registerService:RegisterService) { }
+  constructor(private registerService:RegisterService,private encryp:EncrypDecrypService) { }
 
   ngOnInit(): void {
   }
 
   register(){
     this.user.eligible=false;
+    this.user.userPassword= this.encryp.set('123456$#@$^@1ERF', this.user.userPassword);
+
   
     this.registerService.registerUser(this.user)
       .subscribe(

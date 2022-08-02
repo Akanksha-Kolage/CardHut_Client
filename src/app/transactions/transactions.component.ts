@@ -15,7 +15,7 @@ export class TransactionsComponent implements OnInit {
 
   transactions: NgIterable<Transaction>;
   card: Card = new Card();
-  transaction: Transaction = new Transaction();
+  // transaction: Transaction = new Transaction();
   user: User = new User();
   constructor(private registerService: RegisterService, private route: Router) { 
     
@@ -40,14 +40,14 @@ export class TransactionsComponent implements OnInit {
   }
 
   updateEmi(t:Transaction) {
+    
     this.registerService.updateEmi(t)
       .subscribe(
         tr => {
-          this.transaction = tr;
-          console.log(tr.emiCard.emiCardBalance);
-          console.log((this.transaction.product.productCost / this.transaction.emiScheme));
-          this.transaction.emiCard.emiCardBalance = this.transaction.emiCard.emiCardBalance + (this.transaction.product.productCost / this.transaction.emiScheme);
-          this.registerService.updateCard(this.transaction.emiCard).subscribe(
+       
+          tr.emiCard.emiCardBalance = tr.emiCard.emiCardBalance + (tr.product.productCost / tr.emiScheme);
+          console.log(tr.emiCard);
+          this.registerService.updateCard(tr.emiCard).subscribe(
             crd => {
               sessionStorage.setItem("cardInfo", JSON.stringify(crd));
             }
@@ -56,6 +56,8 @@ export class TransactionsComponent implements OnInit {
       );
     window.location.reload();
   }
+
+
   logOut(){
     console.log("log out");
     sessionStorage.removeItem("userInfo");
