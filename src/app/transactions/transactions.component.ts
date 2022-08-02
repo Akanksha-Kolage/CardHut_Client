@@ -14,9 +14,11 @@ import { User } from '../user';
 export class TransactionsComponent implements OnInit {
 
   transactions: NgIterable<Transaction>;
-  card: Card = new Card();
+  card: Card;
   // transaction: Transaction = new Transaction();
   user: User = new User();
+  updatedCard:Card;
+  // updatedTransaction:Transaction;
   constructor(private registerService: RegisterService, private route: Router) { 
     
   }
@@ -25,14 +27,13 @@ export class TransactionsComponent implements OnInit {
     if(sessionStorage.getItem("userInfo")==null){
       this.route.navigate(['/login']);
     }
-      else{
+    else{
       this.user = JSON.parse(sessionStorage.getItem("userInfo"));
       this.card = JSON.parse(sessionStorage.getItem("cardInfo"));
       this.registerService.viewAllTransactions(this.card.emiCardNo)
         .subscribe(
           data => {
             this.transactions = data;
-            console.log(this.transactions);
           }
         )
     }
@@ -40,21 +41,43 @@ export class TransactionsComponent implements OnInit {
   }
 
   updateEmi(t:Transaction) {
-    
+    console.log("inside");
+
+    if(t.emiPaid==0){
+      t.paidAmount=(t.product.productCost/t.emiScheme)+0.032*(t.product.productCost);
+      t.emiCard.emiCardBalance =t.emiCard.emiCardBalance+(t.product.productCost/t.emiScheme)+0.032*(t.product.productCost);
+    }
+    else{
+      console.log("no 1 emi");
+      t.paidAmount=t.paidAmount+(t.product.productCost/t.emiScheme);
+      t.emiCard.emiCardBalance =t.emiCard.emiCardBalance+(t.product.productCost/t.emiScheme);
+
+    }
+
+    t.balanceAmount = t.totalAmount - t.paidAmount;
+    t.emiPaid = t.emiPaid+1;
+    t.emiRemaining = t.emiScheme - t.emiPaid;
+
+
+  
+    this.registerService.updateCard(t.emiCard).subscribe(
+      crd => {
+        sessionStorage.setItem("cardInfo", JSON.stringify(crd));
+
+      }
+    );
+
+  
+ 
     this.registerService.updateEmi(t)
       .subscribe(
         tr => {
-       
-          tr.emiCard.emiCardBalance = tr.emiCard.emiCardBalance + (tr.product.productCost / tr.emiScheme);
-          console.log(tr.emiCard);
-          this.registerService.updateCard(tr.emiCard).subscribe(
-            crd => {
-              sessionStorage.setItem("cardInfo", JSON.stringify(crd));
-            }
-          );
+         
+
+        
         }
       );
-    window.location.reload();
+   
   }
 
 

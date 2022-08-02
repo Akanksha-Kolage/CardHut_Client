@@ -24,6 +24,7 @@ export class TransactionReceiptComponent implements OnInit {
     else{
       this.user = JSON.parse(sessionStorage.getItem("userInfo"));
       this.transaction = JSON.parse(sessionStorage.getItem("transactionInfo"));
+      console.log(this.transaction);
 
 
     }
