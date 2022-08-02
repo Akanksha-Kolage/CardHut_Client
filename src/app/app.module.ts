@@ -22,6 +22,7 @@ import { ViewProductsComponent } from './view-products/view-products.component';
 import { AddProductComponent } from './add-product/add-product.component';
 import { EditProductComponent } from './edit-product/edit-product.component';
 import { ViewTransactionsComponent } from './view-transactions/view-transactions.component';
+import { EncrypDecrypService } from './encryp-decryp.service';
 
 @NgModule({
   declarations: [
@@ -50,7 +51,9 @@ import { ViewTransactionsComponent } from './view-transactions/view-transactions
     FormsModule,
     HttpClientModule
   ],
-  providers: [],
+  providers: [
+    EncrypDecrypService
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

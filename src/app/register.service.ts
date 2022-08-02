@@ -3,13 +3,13 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { AdminLogin } from './admin-login';
 import { Card } from './card';
-import { Login } from './login';
-import { LoginResponse } from './login-response';
+import { ForgetPassword } from './forget-password';
 import { Product } from './product';
 import { ProductPic } from './product-pic';
 import { TransProductCard } from './trans-product-card';
 import { Transaction } from './transaction';
 import { UpdateProduct } from './update-product';
+import { UpdateUser } from './update-user';
 import { User } from './user';
 
 @Injectable({
@@ -21,11 +21,7 @@ export class RegisterService {
 
   registerUser(user: User): Observable<string> {
     return this.http.post("http://localhost:9191/users/signup", user,{responseType:'text'});
-  }
-
-  loginUser(login:Login):Observable<LoginResponse>{
-    return this.http.post<LoginResponse>("http://localhost:9191/users/login", login);
-  }
+  }y
 
   adminLogin(adminLogin:AdminLogin):Observable<boolean>{
     return this.http.post<boolean>("http://localhost:9191/admin/login", adminLogin);
@@ -82,4 +78,18 @@ export class RegisterService {
   viewAllTransactionsForAdmin(): Observable<any> {
     return this.http.get("http://localhost:9191/transaction/viewTransactions");
   }
+  
+  findUserById(userId:number):Observable<User>{
+    return this.http.get<User>("http://localhost:9191/users/user/"+userId);
+  }
+
+  forgotPassword(userId:number):Observable<ForgetPassword>{
+    return this.http.put<ForgetPassword>("http://localhost:9191/users/forgotPassword/"+userId, { observe: 'response' });
+  }
+
+  updateUser(user:User):Observable<UpdateUser>{
+    return this.http.put<UpdateUser>("http://localhost:9191/users/update", user);
+  }
+
+
 }
