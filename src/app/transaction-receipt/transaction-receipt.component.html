@@ -80,9 +80,9 @@
                                     <span class="text-inverse">{{transaction.product.productName}}</span><br>
                                     <small>{{transaction.product.productDescription}}</small>
                                 </td>
-                                <td class="text-center">₹{{transaction.paidAmount}}</td>
+                                <td class="text-center">₹{{transaction.paidAmount | number: '1.1-2'}}</td>
                                 <!-- <td class="text-center">50</td> -->
-                                <td class="text-right">₹{{transaction.balanceAmount}}</td>
+                                <td class="text-right">₹{{transaction.balanceAmount | number: '1.1-2'}}</td>
                             </tr>
                         </tbody>
                     </table>
@@ -94,19 +94,19 @@
                         <div class="invoice-price-row">
                             <div class="sub-price">
                                 <small>SUBTOTAL</small>
-                                <span class="text-inverse">{{transaction.product.productCost}}</span>
+                                <span class="text-inverse">₹ {{transaction.product.productCost | number: '1.1-2'}}</span>
                             </div>
                             <div class="sub-price">
                                 <i class="fa fa-plus text-muted"></i>
                             </div>
                             <div class="sub-price">
                                 <small>PROCESSING FEE (3.2%)</small>
-                                <span class="text-inverse">{{0.032 * transaction.product.productCost}}</span>
+                                <span class="text-inverse">₹ {{0.032 * transaction.product.productCost | number: '1.1-2'}}</span>
                             </div>
                         </div>
                     </div>
                     <div class="invoice-price-right">
-                        <small>TOTAL</small> <span class="f-w-600">{{transaction.totalAmount}}</span>
+                        <small>TOTAL</small> <span class="f-w-600">₹ {{transaction.totalAmount | number: '1.1-2'}}</span>
                     </div>
                 </div>
                 <!-- end invoice-price -->
@@ -114,8 +114,8 @@
             <!-- end invoice-content -->
             <!-- begin invoice-note -->
             <div class="invoice-note">
-                * Payment is due within 30 days<br>
-                * If you have any questions concerning this invoice, contact [Name, Phone Number, Email]
+                * Payment is due within 30 days.<br>
+                * If you have any questions concerning this invoice, contact us.
             </div>
             <!-- end invoice-note -->
             <!-- begin invoice-footer -->

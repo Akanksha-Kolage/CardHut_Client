@@ -78,4 +78,8 @@ export class RegisterService {
   updateCard(card: Card): Observable<Card> {
     return this.http.put<Card>("http://localhost:9191/cards/updateCard", card);
   }
+
+  viewAllTransactionsForAdmin(): Observable<any> {
+    return this.http.get("http://localhost:9191/transaction/viewTransactions");
+  }
 }

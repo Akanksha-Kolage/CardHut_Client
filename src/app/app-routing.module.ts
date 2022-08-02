@@ -15,6 +15,7 @@ import { RegisterComponent } from './register/register.component';
 import { TransactionReceiptComponent } from './transaction-receipt/transaction-receipt.component';
 import { TransactionsComponent } from './transactions/transactions.component';
 import { ViewProductsComponent } from './view-products/view-products.component';
+import { ViewTransactionsComponent } from './view-transactions/view-transactions.component';
 import { ViewUsersComponent } from './view-users/view-users.component';
 
 const routes: Routes = [
@@ -65,6 +66,9 @@ const routes: Routes = [
   },
   {
     path: 'editProduct', component: EditProductComponent
+  },
+  {
+    path: 'viewTransactions', component: ViewTransactionsComponent
   }
 ];
 

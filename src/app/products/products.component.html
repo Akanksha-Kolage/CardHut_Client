@@ -93,7 +93,7 @@
                 <img class="card-img-top" src="http://localhost:9191/downloads/{{p.productImage}}" alt="Card image cap">
                 <div class="card-body">
                     <h5 class="card-title">{{p.productName}}</h5>
-                    <p class="card-text">{{p.productCost}}</p>
+                    <p class="card-text">₹ {{p.productCost}}</p>
                 </div>
                 <div class="card-footer">
                     <form #buyNowForm="ngForm" (ngSubmit)="viewProduct(p.productId)" ngDefaultControl><button type="submit" class="btn card-button">Buy Now</button></form>
